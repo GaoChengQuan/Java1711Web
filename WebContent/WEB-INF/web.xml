@@ -22,4 +22,15 @@
   
   
   
+  <servlet>
+  	<servlet-name>FindStudent</servlet-name>
+  	<servlet-class>com.situ.student.controller.FindStudentServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>FindStudent</servlet-name>
+  	<url-pattern>/findStudent</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>
