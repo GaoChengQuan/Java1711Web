@@ -25,22 +25,22 @@ public class AddStudentServlet extends HttpServlet{
 		String gender = req.getParameter("gender");
 		String address = req.getParameter("address");
 		Student student = new Student(name, Integer.parseInt(age), gender, address, new Date(), new Date());
+		System.out.println(student);
 		//2.业务处理
 		int result = studentService.add(student);
 		//3.输出响应 Magic number
 		resp.setContentType("text/html;charset=utf-8");
-		/*PrintWriter printWriter = resp.getWriter();
+		PrintWriter printWriter = resp.getWriter();
 		if (result == Constant.ADD_SUCCESS) {
-			printWriter.println("添加成功");
+			printWriter.println("Add Success");
 		} else if (result == Constant.ADD_NAME_REPEAT) {
-			printWriter.println("名字重复");
+			printWriter.println("Name Repeat");
 		} else {
-			printWriter.println("添加失败");
+			printWriter.println("Add Fail");
 		}
-		printWriter.close();*/
+		printWriter.close();
 		
 		//重定向
-		resp.sendRedirect("/Java1711Web/findStudent");
+		//resp.sendRedirect("/Java1711Web/findStudent");
 	}
-
 }
