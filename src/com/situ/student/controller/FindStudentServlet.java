@@ -32,6 +32,7 @@ public class FindStudentServlet extends HttpServlet{
 		//乱码问题
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter printWriter = resp.getWriter();
+		printWriter.println("<a href='/Java1711Web/add_student.html'>添加</a>");
 		printWriter.println("<table border='1' cellspacing='0'>");
 	    printWriter.println("<tr>            ");
 	    printWriter.println("	<th>编号</th>");
