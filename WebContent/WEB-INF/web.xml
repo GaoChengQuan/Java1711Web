@@ -9,10 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
   <context-param>
     <param-name>pageSize</param-name>
     <param-value>20</param-value>
   </context-param>
+  
   <servlet>
     <servlet-name>TimeServlet</servlet-name>
     <servlet-class>com.situ.day27.TimeServlet</servlet-class>
@@ -93,10 +95,19 @@
     <servlet-name>ContextServlet</servlet-name>
     <url-pattern>/context</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>InitServlet</servlet-name>
     <servlet-class>com.situ.student.controller.InitServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>ContextServlet2</display-name>
+    <servlet-name>ContextServlet2</servlet-name>
+    <servlet-class>com.situ.day28.ContextServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ContextServlet2</servlet-name>
+    <url-pattern>/context2</url-pattern>
+  </servlet-mapping>
 </web-app>

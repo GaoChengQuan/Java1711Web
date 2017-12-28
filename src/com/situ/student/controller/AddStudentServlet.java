@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,12 @@ public class AddStudentServlet extends HttpServlet{
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ServletContext servletContext = getServletContext();
+		int count = (int)servletContext.getAttribute("count");
+		System.out.println("count: " + count);
+		count++;
+		servletContext.setAttribute("count", count);
+		
 		//1.接收参数
 		String name = req.getParameter("name");
 		String age = req.getParameter("age");

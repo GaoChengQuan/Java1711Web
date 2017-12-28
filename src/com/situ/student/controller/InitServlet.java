@@ -18,5 +18,7 @@ public class InitServlet extends HttpServlet {
 		System.out.println("InitServlet.init()");
 		ServletContext servletContext = getServletContext();
 		JDBCUtil.init(servletContext);
+		
+		servletContext.setAttribute("count", 0);
 	}
 }

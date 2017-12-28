@@ -10,18 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.situ.student.entity.Student;
-import com.situ.student.service.IStudentService;
-import com.situ.student.service.impl.StudentServiceImpl;
 
-public class ContextServlet extends HttpServlet {
+
+
+public class ContextServlet2 extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ServletContext servletContext = getServletContext();
-		servletContext.setAttribute("name", "zhangsan");
-		IStudentService service = new StudentServiceImpl();
-		List<Student> list = service.findAll();
-		//将list集合放到ServletContext域对象中
-		servletContext.setAttribute("list", list);
+		String name = (String) servletContext.getAttribute("name");
+		System.out.println("name: " + name);
+		List<Student> list = (List<Student>) servletContext.getAttribute("list");
+		for (Student student : list) {
+			System.out.println(student);
+		}
 	}
 }
