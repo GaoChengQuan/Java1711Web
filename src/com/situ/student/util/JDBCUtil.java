@@ -12,23 +12,26 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+import javax.servlet.ServletContext;
+
 public class JDBCUtil {
-	private static String className = "com.mysql.jdbc.Driver";
+	/*private static String className = "com.mysql.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost:3306/java1711student";
 	private static String user = "root";
-	private static String password = "root";
-/*	private static String className;
+	private static String password = "root";*/
+	private static String className;
 	private static String url;
 	private static String user;
-	private static String password;*/
+	private static String password;
 	
 	private JDBCUtil() {
 	}
 	
-	static {
-		/*InputStream inputStream;
+	public static void init(ServletContext servletContext) {
+		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream("src/db.properties");
+			inputStream = servletContext.getResourceAsStream("/WEB-INF/classes/db.properties");
+			//inputStream = new FileInputStream("src/db.properties");
 			Properties properties = new Properties();
 			properties.load(inputStream);
 			className = properties.getProperty("className");
@@ -39,7 +42,7 @@ public class JDBCUtil {
 			e1.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}*/
+		}
 		
 		
 		//1、加载驱动：Class.forName("");
@@ -48,6 +51,10 @@ public class JDBCUtil {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	static {
+		
 	}
 	
 	public static Connection getConnection() throws SQLException {
@@ -97,4 +104,6 @@ public class JDBCUtil {
 			}
 		}
 	}
+
+	
 }
