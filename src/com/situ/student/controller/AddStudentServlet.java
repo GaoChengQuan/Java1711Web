@@ -37,7 +37,7 @@ public class AddStudentServlet extends HttpServlet{
 		int result = studentService.add(student);
 		//3.输出响应 Magic number
 		resp.setContentType("text/html;charset=utf-8");
-		PrintWriter printWriter = resp.getWriter();
+		/*PrintWriter printWriter = resp.getWriter();
 		if (result == Constant.ADD_SUCCESS) {
 			printWriter.println("Add Success");
 		} else if (result == Constant.ADD_NAME_REPEAT) {
@@ -45,9 +45,9 @@ public class AddStudentServlet extends HttpServlet{
 		} else {
 			printWriter.println("Add Fail");
 		}
-		printWriter.close();
+		printWriter.close();*/
 		
 		//重定向
-		//resp.sendRedirect("/Java1711Web/findStudent");
+		resp.sendRedirect("/Java1711Web/findStudent");
 	}
 }

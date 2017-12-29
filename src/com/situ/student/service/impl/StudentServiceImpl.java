@@ -40,4 +40,9 @@ public class StudentServiceImpl implements IStudentService {
 		return studentDao.showStudentAndBanjiInfo();
 	}
 
+	@Override
+	public List<Student> findByName(String name) {
+		return studentDao.findByName(name);
+	}
+
 }

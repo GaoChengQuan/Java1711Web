@@ -19,4 +19,6 @@ public interface IStudentService {
 
 	List<Student> showStudentAndBanjiInfo();
 
+	List<Student> findByName(String name);
+
 }

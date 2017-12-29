@@ -27,14 +27,25 @@ public class StudentMainServlet extends HttpServlet {
 		//处理post请求乱码
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=utf-8");
-		if ("/addStudent.do".equals(servletPath)) {
-			addStudent(req, resp);
-		} else if ("/findStudents.do".equals(servletPath)) {
-			findStudents(req, resp);
+		if ("/add.do".equals(servletPath)) {
+			add(req, resp);
+		} else if ("/findAll.do".equals(servletPath)) {
+			findAll(req, resp);
+		} else if ("/findByName.do".equals(servletPath)) {
+			findByName(req, resp);
+		} else if ("/showInfo.do".equals(servletPath)) {
+			showInfo(req, resp);
 		}
 	}
 
-	private void addStudent(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void findByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String name = req.getParameter("name");
+		List<Student> list = studentService.findByName(name);
+		req.setAttribute("list", list);
+		req.getRequestDispatcher("/showInfo.do").forward(req, resp);
+	}
+
+	private void add(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		// 1.接收参数
 		String name = req.getParameter("name");
 		System.out.println("name:" + name);
@@ -64,12 +75,17 @@ public class StudentMainServlet extends HttpServlet {
 		// resp.sendRedirect("/Java1711Web/findStudent");
 	}
 
-	private void findStudents(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		// 1.接收请求参数，封装成对象
 		// 2.调业务层处理
 		List<Student> list = studentService.findAll();
 		// 3.控制界面的跳转
-		// 乱码问题
+		req.setAttribute("list", list);
+		req.getRequestDispatcher("/showInfo.do").forward(req, resp);
+	}
+
+	private void showInfo(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		List<Student> list = (List<Student>) req.getAttribute("list");
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter printWriter = resp.getWriter();
 		printWriter.println("<a href='/Java1711Web/add_student.html'>添加</a>");

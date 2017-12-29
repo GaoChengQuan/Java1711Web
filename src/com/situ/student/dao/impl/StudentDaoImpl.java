@@ -111,9 +111,35 @@ public class StudentDaoImpl implements IStudentDao{
 	}
 
 	@Override
-	public List<Student> findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Student> findByName(String searchName) {
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String sql = "SELECT id,NAME,age,gender,address,birthday,addTime FROM student where name=?;";
+		List<Student> list = new ArrayList<Student>();
+		try {
+			connection = JDBCUtil.getConnection();
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, searchName);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				Integer id = resultSet.getInt("id");
+				String name = resultSet.getString("name");
+				Integer age = resultSet.getInt("age");
+				String address = resultSet.getString("address");
+				String gender = resultSet.getString("gender");
+				Date birthday = resultSet.getDate("birthday");//java.sql.Date
+				Date addTime = resultSet.getDate("addTime");//java.sql.Date
+				Student student = new Student(id, name, age, gender, address,addTime, birthday);
+				list.add(student);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(connection, preparedStatement, resultSet);
+		}
+		return list;
 	}
 
 	@Override
