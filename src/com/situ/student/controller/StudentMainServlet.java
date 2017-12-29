@@ -44,7 +44,8 @@ public class StudentMainServlet extends HttpServlet {
 		List<Student> list = studentService.findByName(name);
 		req.setAttribute("list", list);
 		// 存储转发是给服务器看的，已经在tomcat下面的/Java1711Web下面所以这个"/"代表/Java1711Web
-		req.getRequestDispatcher("/showInfo.do").forward(req, resp);
+		//req.getRequestDispatcher("/showInfo.do").forward(req, resp);
+		req.getRequestDispatcher("/jsp/student_list.jsp").forward(req, resp);
 	}
 
 	private void add(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -63,7 +64,7 @@ public class StudentMainServlet extends HttpServlet {
 		int result = studentService.add(student);
 		// 3.输出响应 Magic number
 		resp.setContentType("text/html;charset=utf-8");
-		PrintWriter printWriter = resp.getWriter();
+		/*PrintWriter printWriter = resp.getWriter();
 		if (result == Constant.ADD_SUCCESS) {
 			printWriter.println("Add Success");
 		} else if (result == Constant.ADD_NAME_REPEAT) {
@@ -71,10 +72,10 @@ public class StudentMainServlet extends HttpServlet {
 		} else {
 			printWriter.println("Add Fail");
 		}
-		printWriter.close();
+		printWriter.close();*/
 
 		//重定向是给浏览器看的，所以"/"代表的tomacat的目录
-		resp.sendRedirect("/Java1711Web/findStudent");
+		resp.sendRedirect("/Java1711Web/findAll.do");
 	}
 
 	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -85,7 +86,8 @@ public class StudentMainServlet extends HttpServlet {
 		req.setAttribute("list", list);
 		/*RequestDispatcher requestDispatcher = req.getRequestDispatcher("");
 		requestDispatcher.forward(req, resp);*/
-		req.getRequestDispatcher("/showInfo.do").forward(req, resp);
+		//req.getRequestDispatcher("/showInfo.do").forward(req, resp);
+		req.getRequestDispatcher("/jsp/student_list.jsp").forward(req, resp);
 	}
 
 	private void showInfo(HttpServletRequest req, HttpServletResponse resp) throws IOException {

@@ -1,7 +1,4 @@
 <%@page import="com.situ.student.entity.Student"%>
-<%@page import="com.situ.student.service.impl.StudentServiceImpl"%>
-<%@page import="com.situ.student.dao.impl.StudentDaoImpl"%>
-<%@page import="com.situ.student.service.IStudentService"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -12,15 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<!-- JSP脚本 -->	
 	<%
-		String name = "zhansgan";
-		IStudentService studentService = new StudentServiceImpl();
-		List<Student> list = studentService.findAll();
+		List<Student> list = (List<Student>)request.getAttribute("list");
 	%>
-	<%=name %>
-	
+	<a href="/Java1711Web/html/add_student.html">添加学生</a>
 	<table border='1' cellspacing='0'>
 		<tr>
 			<th>编号</th>
@@ -28,6 +20,7 @@
 			<th>年龄</th>
 			<th>性别</th>
 			<th>地址</th>
+			<th>删除</th>
 		</tr>
 	<%
 		for (Student student : list) {
@@ -38,39 +31,11 @@
 				<td><%=student.getAge()%></td>
 				<td><%=student.getGender()%></td>
 				<td><%=student.getAddress()%></td>
+				<td><a href="/Java1711Web/delete.do?id=<%=student.getId()%>">删除</a></td>
 			</tr>
 	<%
 		}
 	%>
 	</table>
-	
-	<hr/>
-	<%
-		for (int i=1; i <= 6; i++) {
-	%>
-			<h<%=i%>>标题<%=i%></h<%=i%>>
-	<%
-		}
-	%>
-	<hr/>
-	<!-- 9*9乘法表 -->
-	<%
-		for (int i = 1; i <= 9; i++) {
-			for (int j = 1; j <= i; j++) {
-	%>
-				<%=i%>*<%=j%>=<%=i*j%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<%
-			}
-	%>
-			<br/>
-	<%
-		}
-	%>
-	
-	
-	
-	
-	
-	
 </body>
 </html>
