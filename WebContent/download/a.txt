@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>通过超链接下载资源</h3>
+	<a href="/Java1711Web/download/a.png">a.png</a>
+	<a href="">a.mp4</a>
+	<a href="">a.rar</a>
+	<a href="">a.txt</a>
+</body>
+</html>

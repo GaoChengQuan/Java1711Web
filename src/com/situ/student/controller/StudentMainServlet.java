@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -42,6 +43,7 @@ public class StudentMainServlet extends HttpServlet {
 		String name = req.getParameter("name");
 		List<Student> list = studentService.findByName(name);
 		req.setAttribute("list", list);
+		// 存储转发是给服务器看的，已经在tomcat下面的/Java1711Web下面所以这个"/"代表/Java1711Web
 		req.getRequestDispatcher("/showInfo.do").forward(req, resp);
 	}
 
@@ -71,8 +73,8 @@ public class StudentMainServlet extends HttpServlet {
 		}
 		printWriter.close();
 
-		// 重定向
-		// resp.sendRedirect("/Java1711Web/findStudent");
+		//重定向是给浏览器看的，所以"/"代表的tomacat的目录
+		resp.sendRedirect("/Java1711Web/findStudent");
 	}
 
 	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -81,6 +83,8 @@ public class StudentMainServlet extends HttpServlet {
 		List<Student> list = studentService.findAll();
 		// 3.控制界面的跳转
 		req.setAttribute("list", list);
+		/*RequestDispatcher requestDispatcher = req.getRequestDispatcher("");
+		requestDispatcher.forward(req, resp);*/
 		req.getRequestDispatcher("/showInfo.do").forward(req, resp);
 	}
 
