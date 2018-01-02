@@ -53,7 +53,7 @@
 				<td><%=student.getGender()%></td>
 				<td><%=student.getAddress()%></td>
 				<%-- <td><a href="/Java1711Web/delete.do?id=<%=student.getId()%>">删除</a></td> --%>
-				<td><a href="javascript(void)" onclick="delStudent(<%=student.getId()%>)">删除</a></td>
+				<td><a href="javascript:delStudent(<%=student.getId()%>)">删除</a></td>
 				<td><a href="/Java1711Web/toUpdate.do?id=<%=student.getId()%>">修改</a></td>
 			</tr>
 			<%
