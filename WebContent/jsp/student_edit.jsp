@@ -12,7 +12,7 @@
 	<%
 		Student student = (Student)request.getAttribute("student");
 	%>
-	<form action="/Java1711Web/update.do" method="post">
+	<form action="<%=request.getContextPath()%>/update.do" method="post">
 		<input type="hidden" name="id" value="<%=student.getId()%>"/>
 		姓名：<input type="text" name="name" value="<%=student.getName()%>"/><br/>
 		年龄：<input type="text" name="age" value="<%=student.getAge()%>"/><br/>

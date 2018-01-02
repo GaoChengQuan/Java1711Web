@@ -18,7 +18,7 @@
 	function delStudent(id) {
 		var isDel = confirm("您确认要 删除么？");
 		if(isDel) {
-			location.href = "/Java1711Web/delete.do?id=" + id;
+			location.href = "<%=request.getContextPath()%>/delete.do?id=" + id;
 		}
 	}
 </script>
@@ -28,8 +28,8 @@
 		List<Student> list = (List<Student>) request.getAttribute("list");
 	%>
 	<div class="align-center">
-		<a class="btn btn-primary" href="/Java1711Web/html/student_add.html">添加学生</a>
-		<form action="/Java1711Web/findByName.do" method="post">
+		<a class="btn btn-primary" href="<%=request.getContextPath()%>/html/student_add.html">添加学生</a>
+		<form action="<%=request.getContextPath()%>/findByName.do" method="post">
 			姓名：<input type="text" name="name" />
 			<input type="submit" value="搜索" />
 		</form>
@@ -52,9 +52,9 @@
 				<td><%=student.getAge()%></td>
 				<td><%=student.getGender()%></td>
 				<td><%=student.getAddress()%></td>
-				<%-- <td><a href="/Java1711Web/delete.do?id=<%=student.getId()%>">删除</a></td> --%>
+				<%-- <td><a href="<%=request.getContextPath()%>/delete.do?id=<%=student.getId()%>">删除</a></td> --%>
 				<td><a href="javascript:delStudent(<%=student.getId()%>)">删除</a></td>
-				<td><a href="/Java1711Web/toUpdate.do?id=<%=student.getId()%>">修改</a></td>
+				<td><a href="<%=request.getContextPath()%>/toUpdate.do?id=<%=student.getId()%>">修改</a></td>
 			</tr>
 			<%
 				}

@@ -118,4 +118,34 @@
     <servlet-name>DownLoadServlet</servlet-name>
     <url-pattern>/download</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CookieServlet</display-name>
+    <servlet-name>CookieServlet</servlet-name>
+    <servlet-class>com.situ.day31.CookieServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CookieServlet</servlet-name>
+    <url-pattern>/cookie</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CookieServlet2</display-name>
+    <servlet-name>CookieServlet2</servlet-name>
+    <servlet-class>com.situ.day31.CookieServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CookieServlet2</servlet-name>
+    <url-pattern>/cookie2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LastAccessTimeServlet</display-name>
+    <servlet-name>LastAccessTimeServlet</servlet-name>
+    <servlet-class>com.situ.day31.LastAccessTimeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LastAccessTimeServlet</servlet-name>
+    <url-pattern>/last</url-pattern>
+  </servlet-mapping>
 </web-app>
