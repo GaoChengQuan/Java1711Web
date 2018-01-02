@@ -23,6 +23,8 @@ public class StudentMainServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println(req.getRequestURI());
+		System.out.println(req.getContextPath());
 		String servletPath = req.getServletPath();
 		System.out.println(servletPath);
 		//处理post请求乱码
@@ -36,7 +38,53 @@ public class StudentMainServlet extends HttpServlet {
 			findByName(req, resp);
 		} else if ("/showInfo.do".equals(servletPath)) {
 			showInfo(req, resp);
+		} else if ("/delete.do".equals(servletPath)) {
+			delete(req, resp);
+		} else if ("/toUpdate.do".equals(servletPath)) {
+			toUpdate(req, resp);
+		} else if ("/update.do".equals(servletPath)) {
+			update(req, resp);
 		}
+	}
+
+	private void update(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		String idStr = req.getParameter("id");
+		String name = req.getParameter("name");
+		String age = req.getParameter("age");
+		String gender = req.getParameter("gender");
+		String address = req.getParameter("address");
+		Student student = new Student(Integer.parseInt(idStr), name, Integer.parseInt(age), gender, address, new Date(), new Date());
+		if (studentService.update(student)) {
+			System.out.println("更新成功");
+		} else {
+			System.out.println("更新失败");
+		}
+		resp.sendRedirect(req.getContextPath() + "/findAll.do");
+	}
+
+	private void toUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//1.获得要修改学生的id
+		String idStr = req.getParameter("id");
+		int id = Integer.parseInt(idStr);
+		//2.把对应id的学生查出来
+		Student student = studentService.findById(id);
+		//3.把查出来学生放到reques域对象中
+		req.setAttribute("student", student);
+		//4.转发到edit_student.jsp
+		req.getRequestDispatcher("/jsp/student_edit.jsp").forward(req, resp);
+	}
+
+	private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		String idStr = req.getParameter("id");
+		int id = Integer.parseInt(idStr);
+		boolean result = studentService.deleteById(id);
+		if (result) {
+			System.out.println("删除成功");
+		} else {
+			System.out.println("删除失败");
+		}
+		//resp.sendRedirect("/Java1711Web/findAll.do");
+		resp.sendRedirect(req.getContextPath() + "/findAll.do");
 	}
 
 	private void findByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

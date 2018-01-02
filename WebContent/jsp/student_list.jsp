@@ -12,7 +12,11 @@
 	<%
 		List<Student> list = (List<Student>)request.getAttribute("list");
 	%>
-	<a href="/Java1711Web/html/add_student.html">添加学生</a>
+	<a href="/Java1711Web/html/student_add.html">添加学生</a>
+	<form action="/Java1711Web/findByName.do" method="post">
+		姓名：<input type="text" name="name"/><br/>
+		<input type="submit" value="搜索"/>
+	</form>
 	<table border='1' cellspacing='0'>
 		<tr>
 			<th>编号</th>
@@ -21,6 +25,7 @@
 			<th>性别</th>
 			<th>地址</th>
 			<th>删除</th>
+			<th>修改</th>
 		</tr>
 	<%
 		for (Student student : list) {
@@ -32,6 +37,7 @@
 				<td><%=student.getGender()%></td>
 				<td><%=student.getAddress()%></td>
 				<td><a href="/Java1711Web/delete.do?id=<%=student.getId()%>">删除</a></td>
+				<td><a href="/Java1711Web/toUpdate.do?id=<%=student.getId()%>">修改</a></td>
 			</tr>
 	<%
 		}

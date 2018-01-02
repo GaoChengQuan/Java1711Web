@@ -12,14 +12,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<!-- JSP脚本 -->	
-	<%
+	<% 
 		String name = "zhansgan";
 		IStudentService studentService = new StudentServiceImpl();
 		List<Student> list = studentService.findAll();
 	%>
+	<!-- JSP表达式 -->
 	<%=name %>
+	<!-- JSP声明 -->
+	<%!
+		int age = 20;
+		public int getAge() {
+			return age;
+		}
+	%>
 	
 	<table border='1' cellspacing='0'>
 		<tr>
@@ -66,8 +73,6 @@
 	<%
 		}
 	%>
-	
-	
 	
 	
 	

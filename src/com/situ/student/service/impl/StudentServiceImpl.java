@@ -45,4 +45,41 @@ public class StudentServiceImpl implements IStudentService {
 		return studentDao.findByName(name);
 	}
 
+	@Override
+	public boolean deleteById(int id) {
+		if (studentDao.deleteById(id) > 0) {
+			return true;
+		} 
+		
+		return false;
+		
+		/*if (studentDao.deleteById(id) > 0) {
+			return true;
+		} else {
+			return false;
+		}
+		*/
+		
+		/*int count = studentDao.deleteById(id);
+		if (count > 0) {
+			return true;
+		} else {
+			return false;
+		}*/
+	}
+
+	@Override
+	public Student findById(int id) {
+		return studentDao.findById(id);
+	}
+
+	@Override
+	public boolean update(Student student) {
+		if (studentDao.update(student) > 0) {
+			return true;
+		} 
+		
+		return false;
+	}
+
 }

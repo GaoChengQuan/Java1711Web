@@ -21,4 +21,10 @@ public interface IStudentService {
 
 	List<Student> findByName(String name);
 
+	boolean deleteById(int id);
+
+	Student findById(int id);
+
+	boolean update(Student student);
+
 }

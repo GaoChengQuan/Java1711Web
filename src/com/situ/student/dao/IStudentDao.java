@@ -33,4 +33,6 @@ public interface IStudentDao {
 	public abstract boolean checkName(String name);
 
 	public abstract List<Student> showStudentAndBanjiInfo();
+
+	public abstract int deleteById(int id);
 }
