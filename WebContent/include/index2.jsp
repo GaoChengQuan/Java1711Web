@@ -7,13 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		int i = 4 / 0;
-	%>
-	<form action="<%=request.getContextPath()%>/login2" method="post">
-		用户名：<input type="text" name="name"><br/>
-		密码：<input type="text" name="password"><br/>
-		<input type="submit" value="登录"/>
-	</form>
+	<jsp:include page="header.jsp"/>
+	<p>这是网站的主题内容部分</p>
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

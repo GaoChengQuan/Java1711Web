@@ -25,9 +25,9 @@ public class StudentMainServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//1.得到Session
-		//没有JSESSIONID返回null，如果有JSESSIONID，就去Session里面找是否有
+		//req.getSession(false);没有JSESSIONID返回null，如果有JSESSIONID，就去Session里面找是否有
 		//对应的Session，如果没有返回null，如果有就返回HttpSession
-		HttpSession session = req.getSession(true);
+		HttpSession session = req.getSession();
 		//得到Session里面数据
 		String userName = (String) session.getAttribute("userName");
 		if (userName == null) {

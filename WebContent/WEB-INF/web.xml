@@ -9,6 +9,17 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- 全局错误处理页面配置 -->
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/jsp/common/500.jsp</location>
+  </error-page>
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/jsp/common/404.html</location>
+  </error-page>
+  
   <context-param>
     <param-name>pageSize</param-name>
     <param-value>20</param-value>

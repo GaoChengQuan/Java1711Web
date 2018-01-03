@@ -7,13 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		int i = 4 / 0;
-	%>
-	<form action="<%=request.getContextPath()%>/login2" method="post">
-		用户名：<input type="text" name="name"><br/>
-		密码：<input type="text" name="password"><br/>
-		<input type="submit" value="登录"/>
-	</form>
+	<%=pageContext.getAttribute("name") %><br/>
+	<%=pageContext.getAttribute("name", PageContext.REQUEST_SCOPE) %><br/>
+	<%=pageContext.getAttribute("name", PageContext.SESSION_SCOPE) %><br/>
+	<%=pageContext.getAttribute("name", PageContext.APPLICATION_SCOPE) %><br/>
+	<br/>
+	<%=pageContext.findAttribute("name") %>
 </body>
 </html>
