@@ -148,4 +148,34 @@
     <servlet-name>LastAccessTimeServlet</servlet-name>
     <url-pattern>/last</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CookiePath1</display-name>
+    <servlet-name>CookiePath1</servlet-name>
+    <servlet-class>com.situ.day31.CookiePath1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CookiePath1</servlet-name>
+    <url-pattern>/servlet/cookiePath1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CookiePath2</display-name>
+    <servlet-name>CookiePath2</servlet-name>
+    <servlet-class>com.situ.day31.CookiePath2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CookiePath2</servlet-name>
+    <url-pattern>/servlet/cookiePath2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet2</display-name>
+    <servlet-name>LoginServlet2</servlet-name>
+    <servlet-class>com.situ.student.controller.LoginServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet2</servlet-name>
+    <url-pattern>/login2</url-pattern>
+  </servlet-mapping>
 </web-app>

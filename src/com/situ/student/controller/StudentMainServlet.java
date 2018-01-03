@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.situ.student.entity.Student;
 import com.situ.student.service.IStudentService;
@@ -23,6 +24,18 @@ public class StudentMainServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//1.得到Session
+		//没有JSESSIONID返回null，如果有JSESSIONID，就去Session里面找是否有
+		//对应的Session，如果没有返回null，如果有就返回HttpSession
+		HttpSession session = req.getSession(true);
+		//得到Session里面数据
+		String userName = (String) session.getAttribute("userName");
+		if (userName == null) {
+			//2.重定向到登录界面
+			resp.sendRedirect(req.getContextPath() + "/jsp/login.jsp");
+			return;
+		}
+		
 		System.out.println(req.getRequestURI());
 		System.out.println(req.getContextPath());
 		String servletPath = req.getServletPath();
