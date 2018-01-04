@@ -62,6 +62,7 @@ public class Student implements Serializable {
 		this.birthday = birthday;
 		this.addTime = addTime;
 	}
+	
 
 	public Banji getBanji() {
 		return banji;

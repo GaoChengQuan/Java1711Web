@@ -2,7 +2,6 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,15 +18,18 @@
 	function delStudent(id) {
 		var isDel = confirm("您确认要 删除么？");
 		if(isDel) {
-			location.href = "${pageContext.request.contextPath}/delete.do?id=" + id;
+			location.href = "<%=request.getContextPath()%>/delete.do?id=" + id;
 		}
 	}
 </script>
 </head>
 <body>
+	<%
+		List<Student> list = (List<Student>) request.getAttribute("list");
+	%>
 	<div class="align-center">
-		<a class="btn btn-primary" href="${pageContext.request.contextPath}/html/student_add.html">添加学生</a>
-		<form action="${pageContext.request.contextPath}/findByName.do" method="post">
+		<a class="btn btn-primary" href="<%=request.getContextPath()%>/html/student_add.html">添加学生</a>
+		<form action="<%=request.getContextPath()%>/findByName.do" method="post">
 			姓名：<input type="text" name="name" />
 			<input type="submit" value="搜索" />
 		</form>
@@ -41,18 +43,22 @@
 				<th>删除</th>
 				<th>修改</th>
 			</tr>
-			<c:forEach items="${list}" var="student">
-				<tr>
-					<td>${student.id}</td>
-					<td>${student.name}</td>
-					<td>${student.age}</td>
-					<td>${student.gender}</td>
-					<td>${student.address}</td>
-					<%-- <td><a href="<%=request.getContextPath()%>/delete.do?id=<%=student.getId()%>">删除</a></td> --%>
-					<td><a href="javascript:delStudent(${student.id})">删除</a></td>
-					<td><a href="${pageContext.request.contextPath}/toUpdate.do?id=${student.id}">修改</a></td>
-				</tr>
-			</c:forEach>
+			<%
+				for (Student student : list) {
+			%>
+			<tr>
+				<td><%=student.getId()%></td>
+				<td><%=student.getName()%></td>
+				<td><%=student.getAge()%></td>
+				<td><%=student.getGender()%></td>
+				<td><%=student.getAddress()%></td>
+				<%-- <td><a href="<%=request.getContextPath()%>/delete.do?id=<%=student.getId()%>">删除</a></td> --%>
+				<td><a href="javascript:delStudent(<%=student.getId()%>)">删除</a></td>
+				<td><a href="<%=request.getContextPath()%>/toUpdate.do?id=<%=student.getId()%>">修改</a></td>
+			</tr>
+			<%
+				}
+			%>
 		</table>
 	</div>
 </body>
