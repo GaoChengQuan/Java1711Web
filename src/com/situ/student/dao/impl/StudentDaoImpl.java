@@ -69,9 +69,7 @@ public class StudentDaoImpl implements IStudentDao {
 		} finally {
 			JDBCUtil.close(connection, preparedStatement);
 		}
-
 		return count;
-	
 	}
 
 	@Override
@@ -242,7 +240,6 @@ public class StudentDaoImpl implements IStudentDao {
 		} finally {
 			JDBCUtil.close(connection, preparedStatement);
 		}
-
 		return count;
 	}
 }
