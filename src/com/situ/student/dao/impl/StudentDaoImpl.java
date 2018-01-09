@@ -50,7 +50,6 @@ public class StudentDaoImpl implements IStudentDao {
 
 	@Override
 	public int update(Student student) {
-
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		int count = 0;

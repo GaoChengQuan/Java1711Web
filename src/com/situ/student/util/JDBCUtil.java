@@ -27,7 +27,7 @@ public class JDBCUtil {
 	private JDBCUtil() {
 	}
 	
-	public static void init(ServletContext servletContext) {
+	public static void init(ServletContext servletContext) {/*
 		InputStream inputStream;
 		try {
 			inputStream = servletContext.getResourceAsStream("/WEB-INF/classes/db.properties");
@@ -51,10 +51,34 @@ public class JDBCUtil {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
+	*/}
 	
 	static {
+
+		InputStream inputStream;
+		try {
+			//inputStream = servletContext.getResourceAsStream("/WEB-INF/classes/db.properties");
+			inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties");
+			Properties properties = new Properties();
+			properties.load(inputStream);
+			className = properties.getProperty("className");
+			url = properties.getProperty("url");
+			user = properties.getProperty("user");
+			password = properties.getProperty("password");
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
+		
+		//1、加载驱动：Class.forName("");
+		try {
+			Class.forName(className);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	
 	}
 	
 	public static Connection getConnection() throws SQLException {
@@ -104,6 +128,4 @@ public class JDBCUtil {
 			}
 		}
 	}
-
-	
 }
