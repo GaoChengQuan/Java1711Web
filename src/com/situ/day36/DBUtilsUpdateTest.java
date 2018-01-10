@@ -60,6 +60,4 @@ public class DBUtilsUpdateTest {
 			e.printStackTrace();
 		}
 	}
-	
-	
 }
