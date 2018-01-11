@@ -222,4 +222,14 @@
     <servlet-name>FilterServlet</servlet-name>
     <url-pattern>/filter</url-pattern>
   </servlet-mapping>
+  
+ <listener>
+ 	<listener-class>com.situ.day38.MyHttpSessionListener</listener-class>
+ </listener>
+ <listener>
+ 	<listener-class>com.situ.day38.MyHttpSessionAttributeListener</listener-class>
+ </listener>
+  <listener>
+ 	<listener-class>com.situ.day38.MyServletContextListener</listener-class>
+ </listener>
 </web-app>
