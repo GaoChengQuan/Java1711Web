@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	function fn1() {
+		//1）创建Ajax引擎对象
+		var xmlHttpRequest = new XMLHttpRequest();
+		//2）为Ajax引擎对象绑定监听（监听服务器已将数据响应给引擎）
+		xmlHttpRequest.onreadystatechange = function() {
+			//5）接受响应数据
+			if(xmlHttpRequest.readyState==4 && xmlHttpRequest.status==200) {
+				var result = xmlHttpRequest.responseText;
+				//alert(result);
+				var span = document.getElementById("span1");
+				span.innerHTML = result;
+			}
+		};
+		//3）绑定提交地址
+		xmlHttpRequest.open("GET", "/Java1711Web/ajax1?name=zhangsan", true);
+		//4）发送请求
+		xmlHttpRequest.send();
+	}
+	
+	function fn2() {
+		//1）创建Ajax引擎对象
+		var xmlHttpRequest = new XMLHttpRequest();
+		//2）为Ajax引擎对象绑定监听（监听服务器已将数据响应给引擎）
+		xmlHttpRequest.onreadystatechange = function() {
+			//5）接受响应数据
+			if(xmlHttpRequest.readyState==4 && xmlHttpRequest.status==200) {
+				var result = xmlHttpRequest.responseText;
+				//alert(result);
+				var span = document.getElementById("span2");
+				span.innerHTML = result;
+			}
+		};
+		//3）绑定提交地址
+		xmlHttpRequest.open("POST", "/Java1711Web/ajax1", false);
+		xmlHttpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		//4）发送请求
+		xmlHttpRequest.send("name=zhangsanPOST");
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="get访问服务器端" onclick="fn1()"/><span id="span1"></span><br/>
+	<input type="button" value="post访问服务器端" onclick="fn2()"/><span id="span2"></span><br/>
+	<input type="button" value="ajax"/>
+</body>
+</html>

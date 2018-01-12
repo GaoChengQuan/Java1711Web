@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+window.onload = function() {
+	var student = {
+		"id" : 12,
+		"name" : "java1711",
+		"age" : 20,
+		"gender" : "男"
+	};
+	
+	console.log(student.name);
+	
+	var list = [
+		{
+			"id" : 12,
+			"name" : "java1711",
+			"age" : 20,
+			"gender" : "男"
+		},
+		{
+			"id" : 13,
+			"name" : "java1712",
+			"age" : 21,
+			"gender" : "女"
+		}
+	];
+	console.log(list[1].name);
+	
+	var student2 = {
+			"id":21,
+			"name":"zhangsan",
+			"age":20,
+			"gender":"男",
+			"interest":["篮球","爬山","旅游"]
+	};
+	console.log(student2.interest[1]);
+	
+	var student3 = {
+			"id":21,
+			"name":"zhangsan",
+			"age":20,
+			"gender":"男",
+			"interest":[
+			    {"name":"篮球","time":"2年"},
+			    {"name":"爬山","time":"3年"},
+			    {"name":"旅游","time":"4年"}
+			 ]
+	};
+	console.log(student3.interest[2].time);
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
