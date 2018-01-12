@@ -239,4 +239,14 @@
     <servlet-name>AjaxServlet1</servlet-name>
     <url-pattern>/ajax1</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AjaxServlet2</display-name>
+    <servlet-name>AjaxServlet2</servlet-name>
+    <servlet-class>com.situ.day38.AjaxServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjaxServlet2</servlet-name>
+    <url-pattern>/ajax2</url-pattern>
+  </servlet-mapping>
 </web-app>

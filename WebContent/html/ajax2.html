@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/Java1711Web/lib/jquery/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+	function fn1() {
+		// $.get(url, [data], [callback], [type])
+		$.get(
+			"/Java1711Web/ajax2", //url
+			{"name":"zhansgan","age":20}, //data表请求服务器端的数据
+			function(data) { //callback 后台执行成功后回调的函数
+				alert(data.name + "," + data.age);
+			},
+			"json" //type表示服务器端返回的数据类型
+		); 
+	}
+	
+	function fn2() {
+		// $.post(url, [data], [callback], [type])
+		$.post(
+			"/Java1711Web/ajax2", //url
+			{"name":"zhansgan11","age":200}, //data表请求服务器端的数据
+			function(data) { //callback 后台执行成功后回调的函数
+				alert(data.name + "," + data.age + " POST");
+			},
+			"json" //type表示服务器端返回的数据类型
+		); 
+	}
+	
+	function fn3() {
+		// $.ajax( { option1:value1,option2:value2... } );
+		$.ajax({
+			async:true,
+			data:{"name":"zhansgan11","age":200},
+			dataType:"json",
+			success:function(data) {
+				alert(data.name + "," + data.age + " POST");
+			},
+			type:"GET",
+			url:"/Java1711Web/ajax2"
+		});
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="get访问服务器端" onclick="fn1()"/><span id="span1"></span><br/>
+	<input type="button" value="post访问服务器端" onclick="fn2()"/><span id="span2"></span><br/>
+	<input type="button" value="post访问服务器端" onclick="fn3()"/><span id="span2"></span><br/>
+	<input type="button" value="ajax"/>
+</body>
+</html>
