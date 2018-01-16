@@ -35,7 +35,7 @@ public class MyServletContextListener implements ServletContextListener{
 			
 			@Override
 			public void run() {
-				System.out.println("银行计息...");
+				//System.out.println("银行计息...");
 			}
 		}, date, 5000);
 		// 24小时 1000*60*60*24

@@ -249,4 +249,14 @@
     <servlet-name>AjaxServlet2</servlet-name>
     <url-pattern>/ajax2</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FileUploadServlet</display-name>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <servlet-class>com.situ.day41.FileUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <url-pattern>/fileUpload</url-pattern>
+  </servlet-mapping>
 </web-app>
