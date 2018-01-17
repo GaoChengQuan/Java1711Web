@@ -1,0 +1,7 @@
+<!ELEMENT contactList (contact+)>
+<!ELEMENT contact (name,age,phone,email,qq)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT phone (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT qq (#PCDATA)>
