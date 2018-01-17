@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contactList>
+	<contact id="001"> 
+		<!-- 姓名 -->
+		<name>张三</name>
+		<age>20</age>
+		<phone>2324673264</phone>
+		<email>zhangsan@qq.com</email>
+		<qq>236823626</qq>
+	</contact>
+	<name>&lt;张三</name>
+	<![CDATA[
+		<if(a>100) {
+			a=0;
+		}>
+	]]>
+</contactList>
