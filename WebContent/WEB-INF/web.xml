@@ -259,4 +259,34 @@
     <servlet-name>FileUploadServlet</servlet-name>
     <url-pattern>/fileUpload</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProvienceServlet</display-name>
+    <servlet-name>ProvienceServlet</servlet-name>
+    <servlet-class>com.situ.day43.ProvienceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProvienceServlet</servlet-name>
+    <url-pattern>/provience</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CityServlet</display-name>
+    <servlet-name>CityServlet</servlet-name>
+    <servlet-class>com.situ.day43.CityServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CityServlet</servlet-name>
+    <url-pattern>/city</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AreaServlet</display-name>
+    <servlet-name>AreaServlet</servlet-name>
+    <servlet-class>com.situ.day43.AreaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AreaServlet</servlet-name>
+    <url-pattern>/area</url-pattern>
+  </servlet-mapping>
 </web-app>
