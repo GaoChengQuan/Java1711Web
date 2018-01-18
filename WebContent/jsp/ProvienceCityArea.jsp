@@ -12,11 +12,13 @@
 			url:"${pageContext.request.contextPath}/provience",
 			dataType:"json",
 			success:function(data) {
-				var html = "<option>--请选择--</option>";
+				appendTemplate(data,"province");
+				
+				/* var html = "<option>--请选择--</option>";
 				for(var i=0; i<data.length; i++) {
 					html += "<option value="+data[i].id+">"+data[i].province+"</option>";
 				}
-				$("#provience").html(html);
+				$("#province").html(html); */
 			},
 			type:"POST"
 		});
@@ -34,11 +36,12 @@
 			data:"provienceId=" + provienceId, 
 			dataType:"json",
 			success:function(data) {
-				var html = "<option>--请选择--</option>";
+				appendTemplate(data,"city");
+				/* var html = "<option>--请选择--</option>";
 				for(var i=0; i<data.length; i++) {
 					html += "<option value="+data[i].id+">"+data[i].city+"</option>";
 				}
-				$("#city").html(html);
+				$("#city").html(html); */
 			},
 			type:"POST"
 		});
@@ -60,12 +63,21 @@
 			type:"POST"
 		});
 	}
+	
+	//封装成通用方法
+	function appendTemplate(data, target) {
+		var html = "<option>--请选择--</option>";
+		for(var i=0; i<data.length; i++) {
+			html += "<option value="+data[i].id+">"+eval("data[i]."+target)+"</option>";
+		}
+		$("#"+target).html(html);
+	}
 
 </script>
 </head>
 <body>
 	省份：
-	<select id="provience" onchange="selectCitys(this)">
+	<select id="province" onchange="selectCitys(this)">
 		<option>--请选择--</option>
 		<option>山东省</option>
 		<option>江苏省</option>
